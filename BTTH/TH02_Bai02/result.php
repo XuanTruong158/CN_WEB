@@ -1,48 +1,50 @@
-<?php
-// Đọc dữ liệu từ file
-$filename = "questions.txt";
-$questions = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
-// Kiểm tra nếu file không tồn tại hoặc không có dữ liệu
-if (!$questions || empty($questions)) {
-    die("Không thể đọc tệp câu hỏi hoặc tệp rỗng.");
-}
-
-// Tách đáp án
-$answers = [];
-foreach ($questions as $line) {
-    if (strpos($line, "Đáp án:") !== false) {
-        $answers[] = trim(substr($line, strpos($line, ":") + 1));
-    }
-}
-
-// Tính điểm
-$score = 0;
-$totalQuestions = count($answers);
-foreach ($_POST as $key => $userAnswer) {
-    $questionNumber = (int)filter_var($key, FILTER_SANITIZE_NUMBER_INT);
-    if (isset($answers[$questionNumber - 1]) && $answers[$questionNumber - 1] === $userAnswer) {
-        $score++;
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kết quả</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Kết quả bài tập</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="container mt-5">
-        <div class="alert alert-success text-center">
-            <h1>Bạn trả lời đúng <strong><?php echo $score; ?></strong>/<?php echo $totalQuestions; ?> câu.</h1>
-        </div>
-        <div class="text-center">
-            <a href="index.php" class="btn btn-primary">Làm lại</a>
-        </div>
+        <h2 class="text-center mb-4">Kết quả bài tập</h2>
+
+        <?php
+        $filename = "questions.txt";
+        if (!file_exists($filename)) {
+            echo "<div class='alert alert-danger'>Không tìm thấy file câu hỏi!</div>";
+            exit;
+        }
+
+        $questions = file($filename, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        // Trích xuất đáp án đúng
+        $answers = [];
+        foreach ($questions as $line) {
+            if (strpos($line, "Đáp án:") !== false) {
+                $answers[] = trim(substr($line, strpos($line, ":") + 1));
+            }
+        }
+
+        // So sánh câu trả lời của người dùng với đáp án đúng
+        $score = 0;
+        foreach ($_POST as $key => $userAnswer) {
+            $questionNumber = (int)filter_var($key, FILTER_SANITIZE_NUMBER_INT);
+            if (isset($answers[$questionNumber]) && $answers[$questionNumber] === $userAnswer) {
+                $score++;
+            }
+        }
+
+        echo "<div class='alert alert-success text-center'>";
+        echo "Bạn trả lời đúng <strong>$score</strong>/" . count($answers) . " câu.";
+        echo "</div>";
+
+        echo "<a href='index.php' class='btn btn-primary'>Làm lại</a>";
+        ?>
     </div>
 </body>
+
 </html>
