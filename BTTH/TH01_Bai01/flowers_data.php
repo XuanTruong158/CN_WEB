@@ -2,7 +2,7 @@
   1 => 
   array (
     'name' => 'Hoa đồng tiền',
-    'description' => 'Hoa 2',
+    'description' => 'Hoa 100',
     'image' => 'images/hoa_dong_tien.webp',
   ),
   2 => 
@@ -88,5 +88,11 @@
     'name' => 'Hoa hướng dương',
     'description' => 'Hoa 16',
     'image' => 'images/hoa_huong_duong.jpg',
+  ),
+  16 => 
+  array (
+    'name' => 'Hoa ông lão',
+    'description' => 'Hoa 199',
+    'image' => 'images/hoa_ong_lao.jpg',
   ),
 );

@@ -2,9 +2,6 @@
 include 'flowers.php'; // Chứa danh sách hoa và các hàm xử lý
 
 $flowers = loadFlowers(); // Tải danh sách hoa từ file
-echo '<pre>';
-print_r($flowers); // In ra nội dung mảng
-echo '</pre>';
 include 'header.php'; // Bao gồm header
 ?>
 
