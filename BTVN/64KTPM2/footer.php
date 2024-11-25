@@ -4,6 +4,6 @@
 <!-- <script src="/bootstrap/bootstrap-4.6.2-dist/js/bootstrap.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<script src="/64KTPM2/bootstrap/bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>
+<script src="/CN_WEB/BTVN/64KTPM2/bootstrap/bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>
 </body>
 </html>
