@@ -1,22 +1,3 @@
-<?php
-include_once '../models/productModel.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $tenSP = $_POST['tenSP'];
-    $gia = $_POST['gia'];
-
-    $isAdd=addProduct($tenSP, $gia);
-    if($isAdd){
-        header('Location: index.php');
-        exit();
-    }
-    else{
-        echo "Thêm sản phẩm thất bại!";
-    }
-    
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,7 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body class="p-5">
     <h1>Thêm sản phẩm mới</h1>
-    <form method="POST" action="addProduct.php">
+    <form method="POST" action="/CN_WEB/BTVN/MVC_Products/controllers/productController.php">
+        <input type="hidden" name="action" value="add"> <!-- Chỉ định hành động là 'add' -->
+
         <div class="form-group">
             <label for="tenSP">Tên sản phẩm:</label>
             <input type="text" name="tenSP" class="form-control" required><br>
@@ -46,7 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <script src="/CN_WEB/BTVN/MVC_Products/node_modules/jquery/dist/jquery.min.js"></script>
-
     <script src="/CN_WEB/BTVN/MVC_Products/bootstrap/bootstrap-4.6.2-dist/js/bootstrap.min.js"></script>
 </body>
 

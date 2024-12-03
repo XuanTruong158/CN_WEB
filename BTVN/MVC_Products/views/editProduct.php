@@ -1,5 +1,5 @@
 <?php
-include_once '../models/productModel.php';
+require_once 'models/productModel.php';
 
 
 $ID=null;
@@ -9,21 +9,6 @@ if (isset($_GET['edit'])) {
     $product = getProductById($ID);
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $ID = $_POST['ID'];
-    $tenSP = $_POST['tenSP'];
-    $gia = $_POST['gia'];
-
-    $isEdit = editProduct($tenSP, $gia, $ID);
-    if($isEdit){
-        header('Location: index.php');
-        exit();
-    }
-    else{
-        echo "Sửa sản phẩm thất bại!";
-    }
-    
-}
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body class="p-5">
     <h1>Sửa sản phẩm</h1>
-    <form method="POST" action="editProduct.php">
-
+    <form method="POST" action="/CN_WEB/BTVN/MVC_Products/controllers/productController.php">
+        <input type="hidden" name="action" value="edit">
         <div class="form-group">
             <label for="ID">Mã sản phẩm:</label>
             <input type="text" name="ID" class="form-control" value="<?php echo $product['ID']; ?>" required readonly><br>

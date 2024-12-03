@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Điều kiện không rewrite cho các file và thư mục thực (như .js, .css, .png, .php, v.v.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Chuyển hướng tất cả các yêu cầu vào index.php, trừ các yêu cầu tệp thực
+RewriteRule ^(.*)$ index.php?action=$1 [QSA,L]
