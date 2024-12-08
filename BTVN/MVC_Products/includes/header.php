@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý sản phẩm</title>
-    <!-- <link rel="stylesheet" href="/bootstrap/bootstrap-4.6.2-dist/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="/CN_WEB/BTVN/MVC_Products/bootstrap/bootstrap-4.6.2-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/CN_WEB/BTVN/MVC_Products/node_modules/bootstrap-icons/font/bootstrap-icons.css">
      
