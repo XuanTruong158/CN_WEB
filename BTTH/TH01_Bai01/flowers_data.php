@@ -95,4 +95,10 @@
     'description' => 'Hoa 199',
     'image' => 'images/hoa_ong_lao.jpg',
   ),
+  17 => 
+  array (
+    'name' => 'Hoa Xuyến Chi',
+    'description' => 'Hoa1000',
+    'image' => 'images/hoa_xuyen_chi.jpg',
+  ),
 );
